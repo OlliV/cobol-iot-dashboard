@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>
+			COBOL says hello!
+		</title>
+	</head>
+	<body>
+		<h2>COBOL says hello!</h2>
+		<P>
+		<b>Examples</b>
+		<ul>
+			<li><a href="showname/Geist">Hello World</a>
+			<li><a href="showsum/1600/416">Calculator (values from path)</a>	
+		</ul>
+	</body>
+</html>		
