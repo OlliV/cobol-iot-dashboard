@@ -1,0 +1,12 @@
+{
+  "public": true,
+  "type": "docker",
+  "features": {
+    "cloud": "v2"
+  },
+  "env": {
+    "REDIS_ADDR": "@redis-addr",
+    "REDIS_PORT": "@redis-port",
+    "REDIS_AUTH": "@redis-auth"
+  }
+}

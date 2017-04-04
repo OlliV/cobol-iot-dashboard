@@ -1,0 +1,13 @@
+<html>
+	<head>
+		<title>
+			DASHBOARD.
+		</title>
+        <meta http-equiv="refresh" content="5">
+	</head>
+	<body>
+
+		<h2> The value is {{counter}} </h2>	
+
+	</body>
+</html>		

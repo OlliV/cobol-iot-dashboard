@@ -35,7 +35,7 @@
        procedure division.
 
 
-       copy "config.cbl".
+       copy "src-cbl/config.cfg".
 
 
        perform web-header.
