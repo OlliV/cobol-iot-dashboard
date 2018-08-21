@@ -64,10 +64,12 @@ int redis_cmd_int(const char *command, int32_t *out)
     if (reply->type == REDIS_REPLY_ERROR) {
         fprintf(stderr, "Redis error: %s\n", reply->str);
         retval = -1;
-    } else if (reply->type == REDIS_REPLY_INTEGER) {
-        *out = reply->integer;
-    } else if (reply->type == REDIS_REPLY_STRING) {
-        *out = atoi(reply->str);
+    } else if (out) {
+        if (reply->type == REDIS_REPLY_INTEGER) {
+            *out = reply->integer;
+        } else if (reply->type == REDIS_REPLY_STRING) {
+            *out = atoi(reply->str);
+        }
     }
     freeReplyObject(reply);
 
