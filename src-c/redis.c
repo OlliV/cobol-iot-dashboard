@@ -6,8 +6,6 @@
 #include "db.h"
 
 static redisContext *redis_ctx;
-int value;
-
 
 int redis_connect(void)
 {
