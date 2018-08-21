@@ -5,7 +5,6 @@
 
         DATA DIVISION.
         WORKING-STORAGE SECTION.
-
         01 the-vars.
             03 COW-vars                 OCCURS 99 TIMES.
                 05 COW-varname          PIC X(99).
@@ -19,7 +18,6 @@
         01 REDIS-ERR                    PIC S9(9) VALUE -1.
 
         LINKAGE SECTION.
-
         01 the-values.
             05 COW-query-values         OCCURS 10 TIMES.
                 10 COW-query-value-name PIC X(90).

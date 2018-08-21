@@ -1,48 +1,41 @@
 
 
-       identification division.
-       program-id. push.
+        IDENTIFICATION DIVISION.
+        PROGRAM-ID. push.
 
-       data division.
-       working-storage section.
+        DATA DIVISION.
+        WORKING-STORAGE SECTION.
+        01 the-vars.
+            03  COW-vars                OCCURS 99 TIMES.
+                05 COW-varname          PIC X(99).
+                05 COW-varvalue         PIC X(99).    
 
-       01 the-vars.
+        01 STR                          PIC X(256).
+        01 RETVAL                       PIC S9(9) BINARY.
 
-          03  COW-vars OCCURS 99 times.
-        
-            05 COW-varname       pic x(99).
-            05 COW-varvalue      pic x(99).    
+        01 REDIS-ERR                    PIC S9(9) VALUE -1.
 
-       01 STR PIC X(256).
-       01 RETVAL PIC S9(9) BINARY.
-       01 REDIS-ERR PIC 9(9).
+        LINKAGE SECTION.
+        01 the-values.
+            05 COW-query-values         OCCURS 10 TIMES.
+                10 COW-query-value-name PIC X(90).
+                10 COW-query-value      PIC X(90).
 
-       linkage section.
+        PROCEDURE DIVISION USING the-values.
+            CALL "redis_connect" RETURNING RETVAL.
+            IF RETVAL = REDIS-ERR THEN
+                EXIT PROGRAM
+            END-IF
 
-       01 the-values.
+            MOVE "INCR counter" to STR
+            CALL "redis_cmd_int" USING
+                STR
+                NULL
+                RETURNING RETVAL
+            END-CALL
 
-          05 COW-query-values           occurs 10 times.
-            10 COW-query-value-name     pic x(90).
-            10 COW-query-value          pic x(90).
-
-
-       procedure division using the-values.
-           MOVE -1 TO REDIS-ERR
-
-           CALL "redis_connect" RETURNING RETVAL.
-           IF RETVAL = REDIS-ERR THEN
-               EXIT PROGRAM
-           END-IF
-
-           MOVE "INCR counter" to STR
-           CALL "redis_cmd_int"
-               USING STR
-               RETURNING RETVAL
-           END-CALL
-
-           CALL "redis_disco".
+            CALL "redis_disco".
       
-       goback.
+        GOBACK.
 
-       end program push.
-
+        END PROGRAM push.
