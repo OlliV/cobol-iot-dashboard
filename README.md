@@ -1,8 +1,8 @@
 cobol-iot-dashboard
 ===================
 
-COBOL CGI program storing and reading Redis + a simple AWS IoT Lambda
-function.
+COBOL CGI program reading and writing to Redis + a simple AWS IoT Lambda
+function just polling the COBOL API.
 
 https://youtu.be/WTMAnvDh4OY
 
