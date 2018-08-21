@@ -4,10 +4,22 @@
 			DASHBOARD.
 		</title>
         <meta http-equiv="refresh" content="5">
+		<style>
+#wrapper {
+	background-color: green; /* for visualization purposes */
+	text-align: center;
+}
+#yourdiv {
+	background-color: red; /* for visualization purposes */
+	display: inline-block;
+}
+		</style>
 	</head>
 	<body>
 
-		<h2> The value is {{counter}} </h2>	
+	<div id="wrapper">
+		<h1 style="font-size:120px;">{{counter}}</h1>
+	</div>
 
 	</body>
 </html>		
