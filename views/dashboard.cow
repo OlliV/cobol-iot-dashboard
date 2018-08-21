@@ -18,7 +18,7 @@
 	<body>
 
 	<div id="wrapper">
-		<h1 style="font-size:120px;">{{counter}}</h1>
+		<div id="yourdiv"><h1 style="font-size:120px;">{{counter}}</h1></div>
 	</div>
 
 	</body>
