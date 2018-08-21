@@ -19,7 +19,7 @@
             05   routing-pattern   pic x(999).
             05   routing-destiny   pic x(999).
 
-                                                                               
+
        01 tester         pic x(1) value "n".  
        01 anyfound       pic x(1) value "n".
        01 ctr            pic 99 usage comp-5.
@@ -245,10 +245,10 @@
 
        01 choppery.
 
-          05 chopped-path-pieces occurs 99 times.                        
+          05 chopped-path-pieces occurs 99 times.
              10 chopped-path-piece pic x(80) value spaces. 
           05 chopped-pattern-pieces occurs 99 times.
-             10 chopped-pattern-piece pic x(80) value spaces.                           
+             10 chopped-pattern-piece pic x(80) value spaces.
                                                                     
        01 counter       pic s9(04) comp. 
        01 positio       pic s9(04).                             
@@ -300,9 +300,9 @@
                     into chopped-path-piece(positio)                    
                    with pointer tmp-pointer    
 
-                unstring the-pattern delimited by '/'          
-                    into chopped-pattern-piece(positio)                    
-                   with pointer tmp-pointer2   
+                unstring the-pattern delimited by '/'
+                    into chopped-pattern-piece(positio)
+                   with pointer tmp-pointer2
 
             end-perform.
 
