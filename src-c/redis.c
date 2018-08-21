@@ -1,4 +1,5 @@
 #include <inttypes.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -47,12 +48,11 @@ fail:
     return -1;
 }
 
-int redis_cmd_int(const char *command)
+int redis_cmd_int(const char *command, int32_t *out)
 {
     char cmdbuf[1024] = {'\0'};
     redisReply *reply;
     int len, retval;
-
 
     len = strlen(command) - 1;
     for (; command[len] == ' '; len--);
@@ -63,10 +63,11 @@ int redis_cmd_int(const char *command)
     reply = redisCommand(redis_ctx, cmdbuf);
     if (reply->type == REDIS_REPLY_ERROR) {
         fprintf(stderr, "Redis error: %s\n", reply->str);
+        retval = -1;
     } else if (reply->type == REDIS_REPLY_INTEGER) {
-        retval = reply->integer;
+        *out = reply->integer;
     } else if (reply->type == REDIS_REPLY_STRING) {
-        retval = atoi(reply->str);
+        *out = atoi(reply->str);
     }
     freeReplyObject(reply);
 
